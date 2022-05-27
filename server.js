@@ -16,6 +16,13 @@ app.use(express.urlencoded({extended: false}));
 
 app.use(cors());
 
+app.get("/", function(req,res) {
+    const docsLink = "https://anime-public-api.netlify.app/";
+    res.write("<h1>Welcome to Anime Facts Public API.</h1>");
+    res.write("<h2>View Documentation.</h2>");
+    res.write(`<a href=${docsLink}>https://anime-public-api.netlify.app/</a>`);
+    res.send();
+})
 app.use("/api/v1/facts", require("./routes/factsRoutes"));
 app.use("/api/v1/users", require("./routes/userRoutes"));
 
