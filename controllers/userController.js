@@ -19,6 +19,7 @@ const registerUser = (req, res) => {
     // ! check for already existing user
     User.findOne({email: email})
     .then((response) => {
+        console.log(response);
         if(response !== null) {
             res.status(400).json({
                 status: "error",
@@ -38,7 +39,7 @@ const registerUser = (req, res) => {
 
             userCredentials.save()
             .then((response) => {
-                // console.log(response);
+                console.log(response);
                 res.status(201).json({
                     status: "success",
                     message: "User created successfully.",
@@ -68,7 +69,7 @@ const loginUser = (req, res) => {
 
     User.findOne({email: email})
     .then((response) => {
-        // console.log(response);
+        console.log(response);
         if(response === null) {
             res.status(400).json({
                 status: "error",
