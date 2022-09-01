@@ -6,6 +6,7 @@ const generateUniqueId = require('generate-unique-id');
 
 
 const registerUser = (req, res) => {
+    console.log("register user api hit");
     const {email, password} = req.body;
 
     // ! handle missing data, bad request
@@ -64,6 +65,7 @@ const registerUser = (req, res) => {
 
 // ! Post user login
 const loginUser = (req, res) => {
+    console.log("login user api hit");
     const email = req.body.email;
     const password = req.body.password;
 
@@ -108,6 +110,7 @@ const loginUser = (req, res) => {
 
 // ! Get user data
 const getUserData = (req,res) => {
+    console.log("user data api hit");
     User.find({_id: req.user.id})
     .then((response) => {
         // console.log(response);
@@ -131,6 +134,7 @@ const getUserData = (req,res) => {
 
 // ! Generate API_KEY
 const getUserAPIKEY = (req, res) => {
+    console.log("api key generation api hit");
     const key = generateUniqueId();
     const API_KEY = key+req.user.id;
 
